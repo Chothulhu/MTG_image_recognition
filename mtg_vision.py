@@ -15,17 +15,10 @@ def augment_image(img):
 
 def augment_image_x_times(img, x):
     augmented_images = []
-
+    
     # za svaku sliku x augmentovanih
-    for i in range(0, x):
-        if random.random() > 0.5:
-            img = img.transpose(Image.FLIP_LEFT_RIGHT)
-        if random.random() > 0.5:
-            img = img.rotate(random.randint(-15, 15))
-        img = ImageEnhance.Brightness(img).enhance(random.uniform(0.8, 1.2))
-        img = ImageEnhance.Contrast(img).enhance(random.uniform(0.8, 1.2))
-        augmented_images.append(img)
-        
+    for _ in range(x):
+        augmented_images.append(augment_image(img.copy())) 
     return augmented_images
 
 def load_images_from_folder(folder, label, size=(32, 32)):

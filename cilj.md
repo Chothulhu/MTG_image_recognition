@@ -1,0 +1,1 @@
+Naučiti model da prepoznaje kartu slikanu kamerom na osnovu treninga nad slikama velike rezolucije (prethodno pripremljenim za treniranje raznim metodama augmentacije podataka)

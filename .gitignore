@@ -181,4 +181,4 @@ cython_debug/
 .cursorindexingignore
 
 # Augmented Data
-data/augmented
+data/augmented/

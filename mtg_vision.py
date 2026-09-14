@@ -23,9 +23,11 @@ def augment_image_x_times(img, x):
         augmented_images.append(augment_image(img.copy()))
     return augmented_images
 
-
+# load and augment tehnicki, ima i enkodiranje u nizove i normalizacija, treba promeniti ime funkcije ili podeliti u vise funkcija
 def load_images_from_folder(folder, label, size=(32, 32)):
     images, labels = [], []
+
+    # augmentacija slika
     for filename in os.listdir(folder):
         if filename.lower().endswith(".jpg"):
             path = os.path.join(folder, filename)
@@ -33,15 +35,18 @@ def load_images_from_folder(folder, label, size=(32, 32)):
             augmented_images = augment_image_x_times(img, 10)
             save_images(
                 np.asarray(augmented_images),
-                "data/augmented/test/augmented_images",
+                f"data/augmented/test/{filename}",
                 filename,
             )
+
+            # enkodiranje slika u nizove i normalizacija
             for img in augmented_images:
                 img = img.resize(size)
                 img_array = np.array(img).astype(np.float32) / 255.0
                 # print(img_array.flatten())
                 images.append(img_array.flatten())
                 labels.append(label)
+
     return np.array(images), np.array(labels)
 
 
@@ -57,26 +62,26 @@ def save_images(images, output_folder, name=""):
 angelic_renewal_images, angelic_renewal_labels = load_images_from_folder(
     "data/base/angelic_renewal", 0
 )  # 0 je labela za sliku "angelic_renewal"
-save_images(angelic_renewal_images, "data/augmented/augmented_angelic_renewal")
+save_images(angelic_renewal_images, "data/encoded/augmented_angelic_renewal")
 
 ironshell_beetle_images, ironshell_beetle_labels = load_images_from_folder(
     "data/base/ironshell_beetle", 1
 )  # 1 je labela za sliku "ironshell_beetle"
 save_images(
-    ironshell_beetle_images, "data/augmented/augmented_ironshell_beetle"
+    ironshell_beetle_images, "data/encoded/augmented_ironshell_beetle"
 )
 
 jade_avenger_images, jade_avenger_labels = load_images_from_folder(
     "data/base/jade_avenger", 2
 )  # 2 je labela za sliku "jade_avenger"
-save_images(jade_avenger_images, "data/augmented/augmented_jade_avenger")
+save_images(jade_avenger_images, "data/encoded/augmented_jade_avenger")
 
 soulherder_images, soulherder_labels = load_images_from_folder(
     "data/base/soulherder", 3
 )  # 3 je labela za sliku "soulherder"
-save_images(soulherder_images, "data/augmented/augmented_soulherder")
+save_images(soulherder_images, "data/encoded/augmented_soulherder")
 
 thallid_images, thallid_labels = load_images_from_folder(
     "data/base/thallid", 4
 )  # 4 je labela za sliku "thallid"
-save_images(thallid_images, "data/augmented/augmented_thallid")
+save_images(thallid_images, "data/encoded/augmented_thallid")

@@ -1,8 +1,5 @@
 numpy==2.5.3
 pillow==12.3.0
-
-# Notebook (vodič kroz projekat)
 matplotlib==3.11.2
 ipykernel==7.3.0
-jupyter-core==5.9.1
-ipython==9.17.1
+tensorflow==2.21.0

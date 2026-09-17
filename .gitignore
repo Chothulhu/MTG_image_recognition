@@ -183,3 +183,4 @@ cython_debug/
 # Augmented Data
 data/augmented/
 data/encoded/
+models/

@@ -20,6 +20,12 @@ def load_model(path=MODEL_PATH):
     return load_model(path)
 
 
+def train_model():
+    from src.train import train
+
+    return train()
+
+
 def predict_directory(model, test_dir=TEST_DIR, size=(32, 32)):
     images = load_images_from_folder(test_dir)
     names = sorted(
@@ -53,7 +59,8 @@ def save_results(results, path=RESULTS_PATH):
 
 
 def main():
-    model = load_model()
+
+    model, _history = train_model()
 
     print("=" * 60)
     print(f"PREDIKCIJA NA SLIKAMA IZ data/test/")

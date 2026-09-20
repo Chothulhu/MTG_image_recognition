@@ -24,7 +24,7 @@ def build_cnn(input_shape=(32, 32, 3), num_classes=5):
         # 30% nasumicno iskljucenih neurona pri svakom koraku da bi sprecili overfit
         tf.keras.layers.Dropout(0.3),
 
-        # 5 neurona, softmax verovatnoce za svaku klasu
+        # num_classes neurona, softmax verovatnoce za svaku klasu
         tf.keras.layers.Dense(num_classes, activation="softmax"),
     ])
 

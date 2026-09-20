@@ -1,9 +1,5 @@
-"""Pipeline: raw slike -> augmentacija -> enkodovanje -> dataset."""
-
 import os
-
 import numpy as np
-
 from src.augment import augment_image_x_times
 from src.helper import (
     encode_images,
@@ -20,11 +16,10 @@ SIZE = (32, 32)
 AUGMENT_PER_IMAGE = 10
 
 CARD_LABELS = {
-    "angelic_renewal": 0,
-    "ironshell_beetle": 1,
+    "ironshell_beetle": 0,
+    "jaces_erasure": 1,
     "jade_avenger": 2,
-    "soulherder": 3,
-    "thallid": 4,
+    "whitemane_lion": 3,
 }
 
 
@@ -33,12 +28,7 @@ def build_dataset(
     size=SIZE,
     augment_per_image=AUGMENT_PER_IMAGE,
 ):
-    """Gradi augmentovani dataset i vraca (X, y).
 
-    Za svaku kartu: ucitava raw slike, augmentuje ih, snima
-    augmentovane verzije (puna rezolucija) i enkodovane verzije (32x32).
-    Na kraju snima X.npy i y.npy u data/encoded/.
-    """
     X, y = [], []
 
     for card, label in CARD_LABELS.items():

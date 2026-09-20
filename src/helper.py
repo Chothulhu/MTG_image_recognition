@@ -1,5 +1,3 @@
-"""Pomocne funkcije: ucitavanje slika, enkodovanje i cuvanje."""
-
 import os
 
 import numpy as np

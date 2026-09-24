@@ -6,12 +6,7 @@ from PIL import Image, ImageEnhance
 
 
 def _rotate_and_crop(img, angle):
-    """Rotira sliku i vraca je na originalnu velicinu centriranim crop-om.
-
-    Za razliku od obicnog rotate (koji crne uglove popunjava crnom ili
-    bojom ivice), ovde nema sinteticke popune — u kadru ostaju samo
-    pravi pikseli karte, kao na fotografiji.
-    """
+    """Rotira sliku i vraca je na originalnu velicinu centriranim crop-om."""
     rotated = img.rotate(angle, resample=Image.BICUBIC, expand=True)
     width, height = img.size
     left = (rotated.width - width) // 2
@@ -20,7 +15,7 @@ def _rotate_and_crop(img, angle):
 
 
 def augment_image(img):
-    """Nasumicno menja sliku: flip, rotacija, osvetljenje, kontrast, zasicenje."""
+    """Nasumicno menja sliku: flip, rotacija, osvetljenje, kontrast"""
     if random.random() > 0.5:
         img = img.transpose(Image.FLIP_LEFT_RIGHT)
 
